@@ -1,12 +1,12 @@
 # udacity-FEND-project-3-weather-journal-app
 
-##Languages - 
+## Languages - 
 HTML, CSS, Javascript
 
-##Objective - 
+## Objective - 
 This project required creation of an asynchronous web app that uses Web API and user data to dynamically update the UI for a Weather-Journal App.
 
-##Steps - 
+## Steps - 
 
 Set up project environment, install Node and packages, included in server.js
 Add POST and GET routes to correctly retrieve data from server
