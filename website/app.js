@@ -6,7 +6,7 @@ const apiKey = 'dadcd2f9d3bbb4d22d160689bc9817b3';
 // Create a new date instance dynamically with JS
 function getDate() {
   let d = newDate();
-  let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
+  let new Date = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
   return newDate;
 }
 
@@ -17,19 +17,17 @@ document.getElementById('generate').addEventListener('click', performAction);
 function performAction(event){
     event.preventDefault();
     const newZip =  document.getElementById('zip').value;
-    const content =  document.getElementById('content').value;
+    const content =  document.getElementById('feelings').value;
 
     // Gets zipcode from Open Weather Map
-    getWeather(baseURL, zipCode, apiKey) 
+    getWeather(baseURL, newZip, apiKey) 
       .then(function(userData){
           // Add data to POST request
-          postData('/add', { date: newDate, temp: userData.main.temp, content })
+          postData('/add', { date: getDate, temp: userData.main.temp, content })
       }).then(function (newData) {
       // call updateUI to update browser content
         updateUI()
       })
-    // reset form
-    form.reset();
 }
 
 /* Function to GET API Data*/
@@ -73,8 +71,6 @@ const updateUI = async () => {
   const request = await fetch('/all');
   try {
     const allData = await request.json()
-    // show icons on the page
-    icons.forEach(icon => icon.style.opacity = '1');
     // update new entry values
     document.getElementById('date').innerHTML = allData.date;
     document.getElementById('temp').innerHTML = allData.temp;
